@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bewusst.Ki — KI-Beratung & Automatisierung</title>
+  <meta name="description" content="Bewusst.Ki — Wir analysieren, optimieren und automatisieren deine KI-Infrastruktur. KI-Audit, Tools und Beratung für Unternehmen."/>
+  <meta name="author" content="Bewusst.Ki"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06060f;
+      --bg2: #0d0b1e;
+      --edge: #1a1840;
+      --muted: #6a68a0;
+      --text: #f0f0ff;
+      --cyan: #00e5ff;
+      --amber: #ff9500;
+      --green: #00ff41;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--edge);
+      position: sticky; top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .logo { font-weight: 800; font-size: 1.2rem; color: var(--cyan); letter-spacing: .05em; }
+    .logo span { color: var(--text); }
+    nav a { font-size: .9rem; color: var(--muted); }
+    nav a:hover { color: var(--cyan); }
+
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 100px 24px 80px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0,229,255,.08);
+      border: 1px solid rgba(0,229,255,.25);
+      color: var(--cyan);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+    h1 em { color: var(--cyan); font-style: normal; }
+    .sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 48px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--cyan);
+      color: #000;
+      font-weight: 800;
+      padding: 16px 48px;
+      border-radius: 8px;
+      font-size: 1rem;
+      letter-spacing: .03em;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      margin-left: 16px;
+    }
+
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    h2 em { color: var(--cyan); font-style: normal; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--edge);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .card-icon { font-size: 2rem; margin-bottom: 14px; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .card p { font-size: .875rem; color: var(--muted); }
+
+    .divider { max-width: 860px; margin: 0 auto; border: none; border-top: 1px solid var(--edge); }
+
+    .cta-block {
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-block h2 { margin-bottom: 16px; }
+    .cta-block p { color: var(--muted); margin-bottom: 36px; }
+
+    footer {
+      border-top: 1px solid var(--edge);
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--cyan); }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 16px; }
+      .hero { padding: 60px 16px 48px; }
+      .btn-ghost { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">bewusst<span>.ki</span></div>
+  <a href="mailto:Bewusst.Ki@gmail.com">Kontakt</a>
+</nav>
+
+<div class="hero">
+  <div class="badge">KI-Beratung &amp; Automatisierung</div>
+  <h1>Deine <em>KI-Infrastruktur</em><br/>auf dem nächsten Level.</h1>
+  <p class="sub">
+    Wir analysieren, optimieren und automatisieren deine KI-Workflows —
+    damit du schneller, smarter und profitabler wirst.
+  </p>
+  <a href="mailto:Bewusst.Ki@gmail.com" class="btn">Beratung anfragen</a>
+  <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+</div>
+
+<hr class="divider"/>
+
+<section id="leistungen">
+  <h2>Was wir <em>bieten</em></h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>KI-Audit</h3>
+      <p>Vollständige Analyse deiner KI-Tools, APIs und Workflows. Konkreter Fahrplan inklusive.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Automatisierung</h3>
+      <p>Wir bauen KI-Pipelines die tatsächlich halten — keine Basteleien, echte Systeme.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛠️</div>
+      <h3>KI-Tools</h3>
+      <p>Eigene Software-Produkte für KI-gestützte Produktivität, Analyse und Wachstum.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Beratung</h3>
+      <p>Strategiegespräch mit echten Antworten — kein generisches Consulting.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<div class="cta-block">
+  <h2>Bereit für <em>Klarheit</em>?</h2>
+  <p>Kein Abo. Kein Bullshit. Direkte Ergebnisse.</p>
+  <a href="mailto:Bewusst.Ki@gmail.com" class="btn">Jetzt Kontakt aufnehmen →</a>
+</div>
+
+<footer>
+  <p>© 2026 Bewusst.Ki · <a href="mailto:Bewusst.Ki@gmail.com">Bewusst.Ki@gmail.com</a></p>
+  <p style="margin-top:8px"><a href="impressum.html">Impressum</a></p>
+</footer>
+
+</body>
+</html>
