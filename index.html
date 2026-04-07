@@ -1,212 +1,867 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bewusst.Ki — KI-Beratung & Automatisierung</title>
-  <meta name="description" content="Bewusst.Ki — Wir analysieren, optimieren und automatisieren deine KI-Infrastruktur. KI-Audit, Tools und Beratung für Unternehmen."/>
-  <meta name="author" content="Bewusst.Ki"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #06060f;
-      --bg2: #0d0b1e;
-      --edge: #1a1840;
-      --muted: #6a68a0;
-      --text: #f0f0ff;
-      --cyan: #00e5ff;
-      --amber: #ff9500;
-      --green: #00ff41;
-    }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-    a { color: var(--cyan); text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEWUSST.KI | PANTHEON OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;400;700;900&family=Syne:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #080810;
+    --deep: #0d0d1a;
+    --indigo: #1a1a3e;
+    --coral: #ff4d6d;
+    --cyan: #00e5ff;
+    --teal: #00b4a0;
+    --gold: #f4c430;
+    --muted: #4a4a6a;
+    --text: #e8e8f5;
+    --dim: #9090b0;
+  }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      border-bottom: 1px solid var(--edge);
-      position: sticky; top: 0;
-      background: var(--bg);
-      z-index: 100;
-    }
-    .logo { font-weight: 800; font-size: 1.2rem; color: var(--cyan); letter-spacing: .05em; }
-    .logo span { color: var(--text); }
-    nav a { font-size: .9rem; color: var(--muted); }
-    nav a:hover { color: var(--cyan); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .hero {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 100px 24px 80px;
-      text-align: center;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(0,229,255,.08);
-      border: 1px solid rgba(0,229,255,.25);
-      color: var(--cyan);
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 5px 18px;
-      border-radius: 20px;
-      margin-bottom: 28px;
-    }
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.12;
-      margin-bottom: 24px;
-    }
-    h1 em { color: var(--cyan); font-style: normal; }
-    .sub {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto 48px;
-    }
-    .btn {
-      display: inline-block;
-      background: var(--cyan);
-      color: #000;
-      font-weight: 800;
-      padding: 16px 48px;
-      border-radius: 8px;
-      font-size: 1rem;
-      letter-spacing: .03em;
-      transition: opacity .2s;
-    }
-    .btn:hover { opacity: .85; }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--cyan);
-      color: var(--cyan);
-      margin-left: 16px;
-    }
+  html { scroll-behavior: smooth; }
 
-    section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-    h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    h2 em { color: var(--cyan); font-style: normal; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--bg2);
-      border: 1px solid var(--edge);
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .card-icon { font-size: 2rem; margin-bottom: 14px; }
-    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-    .card p { font-size: .875rem; color: var(--muted); }
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
 
-    .divider { max-width: 860px; margin: 0 auto; border: none; border-top: 1px solid var(--edge); }
+  /* ── GRID BG ── */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .cta-block {
-      text-align: center;
-      padding: 80px 24px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .cta-block h2 { margin-bottom: 16px; }
-    .cta-block p { color: var(--muted); margin-bottom: 36px; }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(8,8,16,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
 
-    footer {
-      border-top: 1px solid var(--edge);
-      text-align: center;
-      padding: 32px 24px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
-    footer a { color: var(--muted); }
-    footer a:hover { color: var(--cyan); }
+  .logo {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--text);
+  }
 
-    @media (max-width: 600px) {
-      nav { padding: 14px 16px; }
-      .hero { padding: 60px 16px 48px; }
-      .btn-ghost { display: none; }
-    }
-  </style>
+  .logo span { color: var(--coral); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cyan); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+  }
+
+  .glow-coral {
+    background: radial-gradient(circle, rgba(255,77,109,0.2) 0%, transparent 70%);
+    top: -100px; left: -100px;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .glow-cyan {
+    background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, transparent 70%);
+    bottom: -100px; right: -100px;
+    animation: pulse 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--coral);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    animation: fadeUp 1s ease 0.15s both;
+  }
+
+  .hero-title .accent { color: var(--coral); }
+  .hero-title .dim { color: var(--muted); font-weight: 200; }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--dim);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-subtitle strong { color: var(--cyan); font-weight: 600; }
+
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.45s both;
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-101%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover::before { transform: translateX(0); }
+  .btn span { position: relative; z-index: 1; }
+
+  .btn-primary {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: var(--void);
+  }
+
+  .btn-primary::before { background: #ff1a40; }
+  .btn-primary:hover { color: var(--void); }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--muted);
+    color: var(--text);
+  }
+
+  .btn-ghost::before { background: rgba(255,255,255,0.05); }
+  .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* ── EKG LINE ── */
+  .ekg-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 60px 0 0;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .ekg-svg { width: 100%; height: 60px; }
+
+  /* ── SECTION BASE ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 64px;
+    line-height: 1.1;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--muted);
+    border: 1px solid var(--muted);
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    background: var(--deep);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ── PRODUCTS ── */
+  #products { max-width: 1200px; margin: 0 auto; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+    background: var(--muted);
+    border: 1px solid var(--muted);
+  }
+
+  .product-card {
+    background: var(--deep);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .product-card:hover { background: var(--indigo); }
+
+  .product-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--teal));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .product-card:hover::after { transform: scaleX(1); }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .tag-saas { color: var(--teal); border-color: var(--teal); }
+  .tag-vscode { color: var(--cyan); border-color: var(--cyan); }
+  .tag-featured { color: var(--coral); border-color: var(--coral); }
+
+  .card-name {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .card-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .card-price span {
+    font-size: 0.65rem;
+    color: var(--dim);
+    font-weight: 400;
+  }
+
+  .card-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .card-link:hover { border-color: var(--cyan); }
+
+  /* ── TECH SPECS ── */
+  #specs {
+    background: var(--deep);
+    border-top: 1px solid var(--muted);
+    border-bottom: 1px solid var(--muted);
+  }
+
+  .specs-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--muted);
+  }
+
+  .spec-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid var(--muted);
+  }
+
+  .spec-row:last-child { border-bottom: none; }
+
+  .spec-key {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding: 16px 20px;
+    border-right: 1px solid var(--muted);
+    display: flex;
+    align-items: center;
+  }
+
+  .spec-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .terminal {
+    background: var(--void);
+    border: 1px solid var(--muted);
+    padding: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.8;
+    color: var(--teal);
+  }
+
+  .terminal .prompt { color: var(--coral); }
+  .terminal .comment { color: var(--muted); }
+  .terminal .val { color: var(--cyan); }
+
+  /* ── LEGAL ── */
+  #legal {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--muted);
+    border: 1px solid var(--muted);
+    margin-top: 48px;
+  }
+
+  .legal-card {
+    background: var(--deep);
+    padding: 40px 32px;
+    text-align: left;
+  }
+
+  .legal-icon {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .legal-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .legal-text {
+    font-size: 0.8rem;
+    color: var(--dim);
+    line-height: 1.7;
+  }
+
+  .legal-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .legal-link:hover { color: var(--cyan); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--muted);
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+  }
+
+  .footer-logo span { color: var(--coral); }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--cyan); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ekgMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ekg-path {
+    animation: ekgMove 8s linear infinite;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--muted);
+    margin: 0;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    #hero { padding: 100px 20px 60px; }
+    section { padding: 60px 20px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .specs-inner { grid-template-columns: 1fr; gap: 40px; }
+    .legal-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .spec-row { grid-template-columns: 110px 1fr; }
+  }
+</style>
 </head>
 <body>
 
+<div class="grid-bg"></div>
+
+<!-- NAV -->
 <nav>
-  <div class="logo">bewusst<span>.ki</span></div>
-  <a href="mailto:Bewusst.Ki@gmail.com">Kontakt</a>
+  <div class="logo">BEWUSST<span>.</span>KI</div>
+  <ul class="nav-links">
+    <li><a href="#products">Produkte</a></li>
+    <li><a href="#specs">Architektur</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="https://marketplace.visualstudio.com/publishers/BewusstKiDev" target="_blank">Marketplace →</a></li>
+  </ul>
 </nav>
 
-<div class="hero">
-  <div class="badge">KI-Beratung &amp; Automatisierung</div>
-  <h1>Deine <em>KI-Infrastruktur</em><br/>auf dem nächsten Level.</h1>
-  <p class="sub">
-    Wir analysieren, optimieren und automatisieren deine KI-Workflows —
-    damit du schneller, smarter und profitabler wirst.
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow glow-coral"></div>
+  <div class="hero-glow glow-cyan"></div>
+
+  <div class="hero-tag">▸ PANTHEON OS · Event Bus v5 · 14 Subsysteme</div>
+
+  <h1 class="hero-title">
+    HERZ<br>
+    <span class="accent">SCHLÄGT</span><br>
+    <span class="dim">CODE.</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    Kognitive Architektur trifft radikales Engineering.<br>
+    <strong>Visionary Systems Orchestration</strong> für Low-Resource-Environments —
+    optimiert auf 8GB RAM, gebaut für maximale Tiefe.
   </p>
-  <a href="mailto:Bewusst.Ki@gmail.com" class="btn">Beratung anfragen</a>
-  <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+
+  <div class="cta-row">
+    <a href="#products" class="btn btn-primary"><span>Portfolio erkunden</span></a>
+    <a href="https://marketplace.visualstudio.com/publishers/BewusstKiDev" target="_blank" class="btn btn-ghost"><span>VS Code Extensions →</span></a>
+  </div>
+
+  <div class="ekg-container">
+    <svg class="ekg-svg" viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <g class="ekg-path">
+        <polyline
+          points="0,30 80,30 100,30 110,5 120,55 130,10 145,50 160,30 240,30 320,30 340,30 350,5 360,55 370,10 385,50 400,30 480,30 560,30 580,30 590,5 600,55 610,10 625,50 640,30 720,30 800,30 820,30 830,5 840,55 850,10 865,50 880,30 960,30 1040,30 1060,30 1070,5 1080,55 1090,10 1105,50 1120,30 1200,30"
+          fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.6"
+        />
+        <polyline
+          points="0,30 80,30 100,30 110,5 120,55 130,10 145,50 160,30 240,30 320,30 340,30 350,5 360,55 370,10 385,50 400,30 480,30 560,30 580,30 590,5 600,55 610,10 625,50 640,30 720,30 800,30 820,30 830,5 840,55 850,10 865,50 880,30 960,30 1040,30 1060,30 1070,5 1080,55 1090,10 1105,50 1120,30 1200,30"
+          fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.6"
+          transform="translate(1200, 0)"
+        />
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">14</div>
+    <div class="stat-label">Subsysteme S1–S14</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">8GB</div>
+    <div class="stat-label">RAM Optimiert</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Live VS Code Extensions</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">€19</div>
+    <div class="stat-label">Ab Lifetime License</div>
+  </div>
 </div>
 
-<hr class="divider"/>
+<!-- PRODUCTS -->
+<section>
+  <div id="products" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label reveal">PRODUKT-PORTFOLIO</div>
+    <h2 class="section-title reveal">Das Ökosystem.</h2>
 
-<section id="leistungen">
-  <h2>Was wir <em>bieten</em></h2>
-  <div class="cards">
-    <div class="card">
-      <div class="card-icon">🔬</div>
-      <h3>KI-Audit</h3>
-      <p>Vollständige Analyse deiner KI-Tools, APIs und Workflows. Konkreter Fahrplan inklusive.</p>
+    <!-- VS CODE — FEATURED -->
+    <div class="section-label reveal" style="color:var(--cyan);margin-bottom:16px;">🛠 Developer Tools — VS Code Marketplace</div>
+    <div class="products-grid reveal" style="margin-bottom:2px;">
+      <div class="product-card" style="--accent:var(--coral);">
+        <span class="card-icon">⚡</span>
+        <span class="card-tag tag-featured">★ Featured · Live</span>
+        <div class="card-name">BEWUSST.CHARACTER</div>
+        <p class="card-desc">Architektur-Audit & Code-Harmonisierung. Aktiviert kognitive Personas direkt in VS Code — dein persönlicher Architektur-Kopilot.</p>
+        <div class="card-price">€19.00 <span>/ Lifetime Premium License</span></div>
+        <a href="https://marketplace.visualstudio.com/items?itemName=BewusstKiDev.bewusst-character" target="_blank" class="card-link">→ VS Marketplace öffnen</a>
+      </div>
+      <div class="product-card" style="--accent:var(--cyan);">
+        <span class="card-icon">🤖</span>
+        <span class="card-tag tag-vscode">VS Code · Live</span>
+        <div class="card-name">BEWUSST.KI CODING ASSI</div>
+        <p class="card-desc">High-Performance Assistenz für Deep-Tech. Optimiert für Gemini 2.x Flash — intelligente Code-Completion für komplexe Systeme.</p>
+        <div class="card-price">€19.00 <span>/ Lifetime Premium License</span></div>
+        <a href="https://marketplace.visualstudio.com/items?itemName=BewusstKiDev.bewusst-ki" target="_blank" class="card-link">→ VS Marketplace öffnen</a>
+      </div>
+      <div class="product-card" style="--accent:var(--gold);background:rgba(244,196,48,0.04);">
+        <span class="card-icon">🔗</span>
+        <span class="card-tag" style="color:var(--gold);border-color:var(--gold);">Bundle · Best Value</span>
+        <div class="card-name">PANTHEON SUITE</div>
+        <p class="card-desc">Beide Extensions kombiniert. Voller Zugriff auf das gesamte bewusst.ki Developer Ökosystem zu einem reduzierten Preis.</p>
+        <div class="card-price">€29.00 <span>/ Beide Extensions · Lifetime</span></div>
+        <a href="https://marketplace.visualstudio.com/publishers/BewusstKiDev" target="_blank" class="card-link">→ Bundle anfragen</a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">⚡</div>
-      <h3>Automatisierung</h3>
-      <p>Wir bauen KI-Pipelines die tatsächlich halten — keine Basteleien, echte Systeme.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🛠️</div>
-      <h3>KI-Tools</h3>
-      <p>Eigene Software-Produkte für KI-gestützte Produktivität, Analyse und Wachstum.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">💬</div>
-      <h3>Beratung</h3>
-      <p>Strategiegespräch mit echten Antworten — kein generisches Consulting.</p>
+
+    <!-- SAAS -->
+    <div class="section-label reveal" style="color:var(--teal);margin:48px 0 16px;">🚀 SaaS & Web-Applikationen</div>
+    <div class="products-grid reveal">
+      <div class="product-card" style="--accent:var(--teal);">
+        <span class="card-icon">🌐</span>
+        <span class="card-tag tag-saas">SaaS</span>
+        <div class="card-name">GalactOS</div>
+        <p class="card-desc">Das digitale Nervensystem für Fullstack-Audits und System-Visualisierung.</p>
+      </div>
+      <div class="product-card" style="--accent:var(--coral);">
+        <span class="card-icon">💥</span>
+        <span class="card-tag tag-saas">SaaS</span>
+        <div class="card-name">The Crash Room</div>
+        <p class="card-desc">Radikaler Ideen-Kollisions-Generator mit historischen Genien-Motoren.</p>
+      </div>
+      <div class="product-card" style="--accent:var(--teal);">
+        <span class="card-icon">🏛</span>
+        <span class="card-tag tag-saas">SaaS</span>
+        <div class="card-name">Architekton</div>
+        <p class="card-desc">Generative Architektur — verwandelt ein Wort in einen vollständigen Tech-Stack.</p>
+      </div>
+      <div class="product-card" style="--accent:var(--cyan);">
+        <span class="card-icon">💙</span>
+        <span class="card-tag tag-saas">Privacy-First</span>
+        <div class="card-name">E.M.P.A.</div>
+        <p class="card-desc">Empathischer KI-Begleiter für Eltern. Offline-fähig, datensouverän.</p>
+      </div>
+      <div class="product-card" style="--accent:var(--gold);">
+        <span class="card-icon">🪞</span>
+        <span class="card-tag tag-saas">SaaS</span>
+        <div class="card-name">Persona Matrix</div>
+        <p class="card-desc">Das Spiegelkabinett deiner digitalen Identität.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<hr class="divider"/>
+<!-- SPECS -->
+<section id="specs">
+  <div class="specs-inner">
+    <div>
+      <div class="section-label reveal">TECHNISCHE ARCHITEKTUR</div>
+      <h2 class="section-title reveal">PANTHEON OS<br><span style="color:var(--coral)">Core.</span></h2>
+      <div class="spec-list reveal">
+        <div class="spec-row">
+          <div class="spec-key">Core</div>
+          <div class="spec-val">PANTHEON OS · S1–S14</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Event Bus</div>
+          <div class="spec-val">v5 · Firestore Infrastructure</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">AI Engine</div>
+          <div class="spec-val">Gemini 2.0 / 2.5 Flash</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Deployment</div>
+          <div class="spec-val">Hetzner CX32 · 8GB RAM</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">LLM Chain</div>
+          <div class="spec-val">Cerebras → OpenRouter → Groq</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Publisher</div>
+          <div class="spec-val">BewusstKiDev · VS Marketplace</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label reveal" style="opacity:0">_</div>
+      <h2 class="section-title reveal" style="opacity:0">_</h2>
+      <div class="terminal reveal">
+        <div><span class="prompt">$</span> pantheon status</div>
+        <div>&nbsp;</div>
+        <div><span class="comment">// PANTHEON OS v5</span></div>
+        <div>S1  GEHIRN      <span class="val">● ONLINE</span></div>
+        <div>S3  REVENUE     <span class="val">● ONLINE</span></div>
+        <div>S4  GROWTH      <span class="val">● ONLINE</span></div>
+        <div>S12 REFLEX      <span class="val">● ONLINE</span></div>
+        <div>S13 CHARAKTER   <span class="val">● LIVE · marketplace</span></div>
+        <div>S14 CODING ASSI <span class="val">● LIVE · marketplace</span></div>
+        <div>&nbsp;</div>
+        <div><span class="comment">// Event Bus v5 connected</span></div>
+        <div><span class="prompt">▸</span> All systems nominal_</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="cta-block">
-  <h2>Bereit für <em>Klarheit</em>?</h2>
-  <p>Kein Abo. Kein Bullshit. Direkte Ergebnisse.</p>
-  <a href="mailto:Bewusst.Ki@gmail.com" class="btn">Jetzt Kontakt aufnehmen →</a>
-</div>
+<!-- LEGAL -->
+<section>
+  <div id="legal">
+    <div class="section-label reveal">COMPLIANCE & LEGAL</div>
+    <h2 class="section-title reveal">Transparenz.<br><span style="color:var(--teal)">Digital Sovereignty.</span></h2>
 
+    <div class="legal-grid reveal">
+      <div class="legal-card">
+        <span class="legal-icon">⚖️</span>
+        <div class="legal-title">Terms of Service</div>
+        <p class="legal-text">Alle Produkte sind vollständig fertiggestellte Software (100% premade). Der Kauf schaltet Premium-Features per Lizenzschlüssel frei. Keine manuellen Dienstleistungen.</p>
+        <a href="#" class="legal-link">→ Vollständige AGB</a>
+      </div>
+      <div class="legal-card">
+        <span class="legal-icon">🔐</span>
+        <div class="legal-title">Datenschutz</div>
+        <p class="legal-text">Privacy-First-Prinzip. Keine Weitergabe von Nutzerdaten an Dritte. E.M.P.A. ist vollständig offline-fähig. Deine Daten gehören dir.</p>
+        <a href="#" class="legal-link">→ Datenschutzerklärung</a>
+      </div>
+      <div class="legal-card">
+        <span class="legal-icon">↩️</span>
+        <div class="legal-title">Widerrufsrecht</div>
+        <p class="legal-text">14 Tage Widerrufsrecht für digitale Produkte gemäß EU-Verbraucherrecht. Bei Fragen: support@bewusst.ki</p>
+        <a href="#" class="legal-link">→ Widerrufsbelehrung</a>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:48px;padding:24px;border:1px solid var(--muted);background:var(--deep);text-align:left;max-width:600px;margin-left:auto;margin-right:auto;">
+      <div class="section-label" style="margin-bottom:8px;">Impressum</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--dim);line-height:1.9;">
+        André Neumann · Bewusst.Ki<br>
+        Paderborn, NRW, Deutschland<br>
+        GitHub: <a href="https://github.com/bewusstki-hue" style="color:var(--teal);text-decoration:none;">bewusstki-hue</a><br>
+        Marketplace: <a href="https://marketplace.visualstudio.com/publishers/BewusstKiDev" style="color:var(--teal);text-decoration:none;">BewusstKiDev</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Bewusst.Ki · <a href="mailto:Bewusst.Ki@gmail.com">Bewusst.Ki@gmail.com</a></p>
-  <p style="margin-top:8px"><a href="impressum.html">Impressum</a></p>
+  <div class="footer-logo">BEWUSST<span>.</span>KI</div>
+  <div class="footer-copy">© 2026 André Neumann · Herz schlägt Code</div>
+  <ul class="footer-links">
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="https://github.com/bewusstki-hue" target="_blank">GitHub</a></li>
+    <li><a href="https://marketplace.visualstudio.com/publishers/BewusstKiDev" target="_blank">Marketplace</a></li>
+  </ul>
 </footer>
 
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Fix terminal reveal
+  document.querySelectorAll('.reveal[style*="opacity:0"]').forEach(el => {
+    el.style.opacity = '';
+    el.style.removeProperty('opacity');
+  });
+</script>
 </body>
 </html>
